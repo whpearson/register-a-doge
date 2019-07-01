@@ -6,6 +6,7 @@ def setup_db_connection
   ActiveRecord::Base.establish_connection(
     adapter: :postgresql,
     host: ENV.fetch('DB_HOST', 'localhost'),
+    pool: ENV.fetch('DB_POOL', 50),
     database: ENV.fetch('DB_NAME', 'postgres'),
     username: ENV.fetch('DB_USERNAME', 'postgres'),
     password: ENV.fetch('DB_PASSWORD', 'postgres'),
