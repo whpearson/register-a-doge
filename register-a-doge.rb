@@ -30,9 +30,9 @@ post '/register' do
   unless registration.valid?
     return erb :register, locals: { registration: registration }
   end
-
+  splunk_token = ENV.fetch('SPLUNK_TOKEN', 'error'),
   registration.save!
-
+   `curl -k "https://hec.splunk.zero.game.gds-reliability.engineering/services/collector"   -H "Authorization: Splunk #{SPLUNK_TOKEN}" -d '{"sourcetype": "_json", "event": {"first_name": registration.first_name, "last_name":registration.last_name, "code": registration.code, "registration": registration.registration } }'` 
   erb :success, locals: { registration: registration }
 end
 
