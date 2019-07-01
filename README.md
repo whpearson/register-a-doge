@@ -1,6 +1,4 @@
-# Register a Doge
-
-Demo application for a gameday.
+# TECH.OPS / Register a Doge
 
 ## Usage
 
@@ -12,16 +10,10 @@ RACK_ENV=development rackup
 RACK_ENV=production rackup
 ```
 
-## Postgres
+## End-to-End Test
 
-A postgres database is required:
+The e2e tests use the Splunk HTTP Event Collector, please enable this in your splunk config, and update the config in web.env.
 
+```shell
+$ docker-compose up
 ```
-# Run locally
-docker run --rm -it -d -p 5432:5432 postgres
-bundle exec rspec # run the tests
-```
-
-## Docker
-
-A docker image is provided: `/tlwr/register-a-doge`
